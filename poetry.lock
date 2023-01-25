@@ -1,0 +1,97 @@
+[[package]]
+name = "arrow"
+version = "1.2.3"
+description = "Better dates & times for Python"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+python-dateutil = ">=2.7.0"
+
+[[package]]
+name = "attrs"
+version = "22.2.0"
+description = "Classes Without Boilerplate"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+cov = ["attrs", "coverage-enable-subprocess", "coverage[toml] (>=5.3)"]
+dev = ["attrs"]
+docs = ["furo", "sphinx", "myst-parser", "zope.interface", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier"]
+tests = ["attrs", "zope.interface"]
+tests-no-zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "cloudpickle", "mypy (>=0.971,<0.990)", "pytest-mypy-plugins"]
+tests_no_zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "cloudpickle", "mypy (>=0.971,<0.990)", "pytest-mypy-plugins"]
+
+[[package]]
+name = "ics"
+version = "0.7.2"
+description = "Python icalendar (rfc5545) parser"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+arrow = ">=0.11"
+attrs = ">=19.1.0"
+python-dateutil = "*"
+six = ">1.5"
+tatsu = ">4.2"
+
+[[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
+name = "tatsu"
+version = "5.8.3"
+description = "TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.extras]
+future-regex = ["regex"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.11"
+content-hash = "11acdf4e0ef5e6a81eb3c38029a1546ae535381e7f2e6a4b8127c2c31bb7addc"
+
+[metadata.files]
+arrow = [
+    {file = "arrow-1.2.3-py3-none-any.whl", hash = "sha256:5a49ab92e3b7b71d96cd6bfcc4df14efefc9dfa96ea19045815914a6ab6b1fe2"},
+    {file = "arrow-1.2.3.tar.gz", hash = "sha256:3934b30ca1b9f292376d9db15b19446088d12ec58629bc3f0da28fd55fb633a1"},
+]
+attrs = [
+    {file = "attrs-22.2.0-py3-none-any.whl", hash = "sha256:29e95c7f6778868dbd49170f98f8818f78f3dc5e0e37c0b1f474e3561b240836"},
+    {file = "attrs-22.2.0.tar.gz", hash = "sha256:c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99"},
+]
+ics = [
+    {file = "ics-0.7.2-py2.py3-none-any.whl", hash = "sha256:5fcf4d29ec6e7dfcb84120abd617bbba632eb77b097722b7df70e48dbcf26103"},
+    {file = "ics-0.7.2-py3.9.egg", hash = "sha256:da352bdf8418619dc93611e6d251f3cefbb42664777f6e00b580a722098124b7"},
+    {file = "ics-0.7.2.tar.gz", hash = "sha256:6743539bca10391635249b87d74fcd1094af20b82098bebf7c7521df91209f05"},
+]
+python-dateutil = []
+six = []
+tatsu = [
+    {file = "TatSu-5.8.3-py2.py3-none-any.whl", hash = "sha256:0a836692e67247cad9f251e083b045b13345cc715e69a7fbc16522beaa0f2163"},
+    {file = "TatSu-5.8.3.zip", hash = "sha256:571ecbcdf33b7828c05e5cd95a8e8ad06af111c2c83a6a245be4d8f7c43de7bb"},
+]
