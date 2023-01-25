@@ -22,7 +22,8 @@ def group_events_between(
     end = arrow.get(end)
 
     groups: Dict[str, datetime.timedelta] = {}
-    for event in Timeline(calendar).included(start, end):
+    timeline = Timeline(calendar).included(start, end)
+    for event in timeline:
         if event.name not in groups:
             groups[event.name] = datetime.timedelta()
         groups[event.name] += event.duration

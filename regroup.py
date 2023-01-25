@@ -1,15 +1,14 @@
 import argparse
 import csv
-from typing import Dict, List, Iterable
+from typing import Dict, List
 import sys
 
 
-def read_file(path: str) -> List[Dict[str, float]]:
-    with open(path, "r") as f:
-        return csv.DictReader(f)
+def read_file(content: str) -> List[Dict[str, float]]:
+    return csv.DictReader(content.splitlines(), delimiter=",")
 
 
-def read_stdin(stdin) -> List[Dict[str, float]]:
+def read_stdin(stdin: str) -> List[Dict[str, float]]:
     return csv.DictReader(
         stdin.splitlines(), delimiter="\t", fieldnames=["group", "duration"]
     )
@@ -20,28 +19,31 @@ def main():
         description="Group events in an ICS file by event name, aggregating on the duration of each event."
     )
     parser.add_argument(
-        "--input",
-        "-i",
-        help="Input file, will be read in CSV format. Has to contain the headers 'group' and 'duration'.",
-        type=str,
+        "input",
+        help="Input to read. Can be either stdin or a path to a CSV with headers 'group' and 'duration'.",
+        type=argparse.FileType("r"),
+        default="-",
     )
     args = parser.parse_args()
-
-    if args.input is None:
-        input_data = read_stdin(sys.stdin.read())
+    if args.input.name == "<stdin>":
+        input_data = read_stdin(args.input.read())
     else:
         input_data = read_file(args.input)
 
+    # reopen stdin
+    # thanks to VPfB https://stackoverflow.com/a/66143581
+    sys.stdin.close()
+    sys.stdin = open("/dev/tty")
+
     new_groups = {}
     for element in input_data:
-        print(element["group"])
-        print("Assign to: ", end="")
-        new_group = input()
+        new_group = input(f"{element['group']} ({element['duration']}h)\nAssign to: ")
         if new_group not in new_groups:
             new_groups[new_group] = 0.0
         new_groups[new_group] += float(element["duration"])
 
-    print(new_groups)
+    for group, duration in new_groups.items():
+        print(f"{group}:\t{duration}")
 
 
 if __name__ == "__main__":
