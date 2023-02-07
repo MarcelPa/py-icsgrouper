@@ -52,7 +52,7 @@ def main():
     else:
         with open(args.output, "w+") as f:
             writer = csv.writer(f)
-            writer.writerow(["group", "duration (h)"])
+            writer.writerow(["group", "duration"])
             for group, duration in groups.items():
                 writer.writerow([group, duration.total_seconds() / 3600])
 
