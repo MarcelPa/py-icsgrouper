@@ -7,6 +7,8 @@ authors = ["Marcel Parciak <marcel.parciak@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 ics = "^0.7.2"
+spacy = "^3.7.4"
+pandas = "^2.2.1"
 
 [tool.poetry.dev-dependencies]
 
